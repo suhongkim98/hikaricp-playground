@@ -1,0 +1,16 @@
+services:
+  demo-hikari-mysql:
+    container_name: demo-mysql
+    image: mysql:8.0.36
+    ports:
+      - "3306:3306"
+    volumes:
+      - "./mysql-initdb/:/docker-entrypoint-initdb.d/"
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+    networks:
+      - localhikrainet
+
+networks:
+  localhikrainet:
+    attachable: true
